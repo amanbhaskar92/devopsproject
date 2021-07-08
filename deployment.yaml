@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devopsproject
+  labels:
+    app: devopsproject
+spec:
+  selector:
+    matchLabels:
+      app: devopsproject
+      tier: web
+  template:
+    metadata:
+      labels:
+        app: devopsproject
+        tier: web
+    spec:
+      containers:
+      - name: kubernetes-bootcamp
+        image: docker.io/jocatalin/kubernetes-bootcamp:v1
+        ports:
+        - containerPort: 8080
+
+      - name: devopscustomcontainer
+        image: amanbhaskar92/devopsproject
+        ports:
+        - containerPort: 80
