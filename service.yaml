@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: devopsproject-service
+  labels:
+    app: devopsproject
+spec:
+  ports:
+  - name: kubernetes-bootcamp
+    protocol: TCP
+    nodePort: 30163
+    port: 8081
+    targetPort: 8080
+  - name: devopscustomcontainer
+    nodePort: 30164
+    port: 81
+    targetPort: 80
+  type: NodePort
+  selector:
+    app: devopsproject
